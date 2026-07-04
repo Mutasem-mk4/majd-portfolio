@@ -1712,53 +1712,41 @@ body.cursor-ready .cursor-ring { opacity: 1; }
         </div>
       </div>
 
-      <!-- Project 4: Digital Artwork -->
-      <article class="work-card reveal r-scale" style="--i:3" data-cursor-text="View">
-        <!-- PROJECT IMAGE 4 -->
-        <div class="work-placeholder grad-4" role="img" aria-label="Digital Artwork placeholder">
-          <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="200,40 340,220 60,220" stroke="rgba(255,255,255,.1)" stroke-width="2" fill="rgba(255,255,255,.03)"/>
-            <circle cx="200" cy="160" r="35" fill="rgba(255,255,255,.06)"/>
-          </svg>
+      <!-- Project 4: Coffee Forms & Textures -->
+      <div class="work-card reveal r-scale" style="--i:3" data-cursor-text="View" onclick="openProjectModal('coffee-tray')">
+        <div class="work-placeholder">
+          <img src="coffee-tray.jpg" alt="Coffee Forms & Textures Product Photography" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="work-overlay"><span class="work-overlay-text">View Project <i class="fa-solid fa-arrow-right"></i></span></div>
         <div class="work-info">
-          <p class="work-cat"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Digital Art</p>
-          <h3>Digital Artwork</h3>
+          <p class="work-cat"><i class="fa-solid fa-camera" aria-hidden="true"></i> Product Photography</p>
+          <h3>Coffee Forms &amp; Textures</h3>
         </div>
-      </article>
+      </div>
 
-      <!-- Project 5: Logo Design -->
-      <article class="work-card reveal r-scale" style="--i:4" data-cursor-text="View">
-        <!-- PROJECT IMAGE 5 -->
-        <div class="work-placeholder grad-5" role="img" aria-label="Logo Design placeholder">
-          <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="200" cy="120" r="60" stroke="rgba(255,255,255,.1)" stroke-width="3" fill="none"/>
-            <path d="M170 120 L200 80 L230 120 L200 160 Z" fill="rgba(255,255,255,.07)"/>
-          </svg>
+      <!-- Project 5: BLK Iced Coffee Latte -->
+      <div class="work-card reveal r-scale" style="--i:4" data-cursor-text="View" onclick="openProjectModal('iced-coffee')">
+        <div class="work-placeholder">
+          <img src="iced-coffee.jpg" alt="BLK Iced Coffee Latte Product Photography" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="work-overlay"><span class="work-overlay-text">View Project <i class="fa-solid fa-arrow-right"></i></span></div>
         <div class="work-info">
-          <p class="work-cat"><i class="fa-solid fa-star" aria-hidden="true"></i> Identity</p>
-          <h3>Logo Design</h3>
+          <p class="work-cat"><i class="fa-solid fa-camera" aria-hidden="true"></i> Product Photography</p>
+          <h3>BLK Iced Coffee Latte</h3>
         </div>
-      </article>
+      </div>
 
-      <!-- Project 6: Multimedia Project -->
-      <article class="work-card reveal r-scale" style="--i:5" data-cursor-text="View">
-        <!-- PROJECT IMAGE 6 -->
-        <div class="work-placeholder grad-6" role="img" aria-label="Multimedia Project placeholder">
-          <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
-            <rect x="100" y="70" width="200" height="120" rx="8" fill="rgba(255,255,255,.05)"/>
-            <polygon points="175,110 175,170 225,140" fill="rgba(255,255,255,.12)"/>
-          </svg>
+      <!-- Project 6: Traditional Cultural Gathering -->
+      <div class="work-card reveal r-scale" style="--i:5" data-cursor-text="View" onclick="openProjectModal('cultural-gathering')">
+        <div class="work-placeholder">
+          <img src="cultural-gathering.jpg" alt="Traditional Cultural Gathering Documentary Photography" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="work-overlay"><span class="work-overlay-text">View Project <i class="fa-solid fa-arrow-right"></i></span></div>
         <div class="work-info">
-          <p class="work-cat"><i class="fa-solid fa-film" aria-hidden="true"></i> Multimedia</p>
-          <h3>Multimedia Project</h3>
+          <p class="work-cat"><i class="fa-solid fa-camera" aria-hidden="true"></i> Documentary Photography</p>
+          <h3>Traditional Cultural Gathering</h3>
         </div>
-      </article>
+      </div>
 
     </div>
   </div>
@@ -2174,6 +2162,37 @@ body.cursor-ready .cursor-ring { opacity: 1; }
           <li>High-contrast visual language designed to keep young readers engaged.</li>
         </ul>
       `
+    },
+    "coffee-tray": {
+      title: "Coffee Forms & Textures",
+      category: "Product Photography",
+      image: "coffee-tray.jpg",
+      pdf: null,
+      description: `
+        <p>A close-up product-style photograph showing different forms of coffee displayed on a wooden tray.</p>
+        <p>Three metal spoons are arranged across the tray: one contains instant coffee granules, the middle spoon holds roasted coffee beans, and the spoon on the right contains finely ground coffee powder.</p>
+        <p>The composition captures the unique textures, shapes, and details of each form of coffee. From the rough, organic structure of instant granules to the polished sheen of whole roasted beans and the fine powder, the visual contrast highlights the journey of the bean. This photographic work emphasizes natural textures and rustic, organic styling.</p>
+      `
+    },
+    "iced-coffee": {
+      title: "BLK Iced Coffee Latte",
+      category: "Product Photography",
+      image: "iced-coffee.jpg",
+      pdf: null,
+      description: `
+        <p>A professional product-style photograph featuring an iced coffee drink presented in a transparent cup with the BLK logo.</p>
+        <p>The drink is an iced latte, showing a visually attractive blend of coffee and milk layers, creating a smooth contrast between dark brown and creamy white tones. The photography highlights the clean layout, the logo, and uses real roasted coffee beans scattered artistically around the base to create a rich and inviting composition.</p>
+      `
+    },
+    "cultural-gathering": {
+      title: "Traditional Cultural Gathering",
+      category: "Documentary Photography",
+      image: "cultural-gathering.jpg",
+      pdf: null,
+      description: `
+        <p>A documentary-style photograph capturing a group of men sitting together outdoors in a traditional social setting.</p>
+        <p>The scene is natural and candid, showing interaction, communication, and shared cultural moments. The individuals are engaged in conversation and gestures, sitting by a backgammon board, creating a powerful sense of connection, tradition, and local community life.</p>
+      `
     }
   };
 
@@ -2189,9 +2208,11 @@ body.cursor-ready .cursor-ring { opacity: 1; }
       <p class="modal-project-cat">${data.category}</p>
       <h3 class="modal-project-title">${data.title}</h3>
       <div class="modal-project-desc">${data.description}</div>
+      ${data.pdf ? `
       <a href="${data.pdf}" target="_blank" class="btn btn-primary" style="margin-top:10px;">
         <i class="fa-solid fa-file-pdf"></i> View Full PDF Project
       </a>
+      ` : ''}
     `;
 
     modal.classList.add('active');
