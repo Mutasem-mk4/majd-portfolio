@@ -1360,6 +1360,106 @@ body.cursor-ready .cursor-ring { opacity: 1; }
   transform: translateY(-3px);
 }
 
+/* Project Modal Styles */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+.project-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.project-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(26,22,19,.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.project-modal-content {
+  position: relative;
+  background: var(--light-bg);
+  width: 90%;
+  max-width: 760px;
+  max-height: 85vh;
+  border-radius: 20px;
+  overflow-y: auto;
+  box-shadow: 0 20px 50px rgba(0,0,0,.3);
+  z-index: 2001;
+  padding: 40px;
+  transform: scale(.92);
+  transition: transform .4s cubic-bezier(.22,1,.36,1);
+}
+.project-modal.active .project-modal-content {
+  transform: scale(1);
+}
+.project-modal-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  color: var(--dark);
+  cursor: pointer;
+  z-index: 2002;
+  transition: color .25s, transform .25s;
+}
+.project-modal-close:hover {
+  color: var(--orange);
+  transform: rotate(90deg);
+}
+.modal-project-img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  object-fit: cover;
+  max-height: 400px;
+  box-shadow: var(--card-shadow);
+}
+.modal-project-title {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: var(--dark);
+}
+.modal-project-cat {
+  font-size: .8rem;
+  color: var(--orange);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-bottom: 20px;
+}
+.modal-project-desc {
+  font-size: .95rem;
+  line-height: 1.75;
+  color: var(--dark);
+  margin-bottom: 28px;
+}
+.modal-project-desc h4 {
+  font-size: 1.05rem;
+  margin: 18px 0 8px;
+  color: var(--orange);
+}
+.modal-project-desc p {
+  margin-bottom: 12px;
+}
+.modal-project-desc ul {
+  list-style: disc;
+  margin-left: 20px;
+  margin-bottom: 16px;
+  color: var(--dark);
+}
+.modal-project-desc li {
+  margin-bottom: 6px;
+}
+
 /* ═══════ UTILITY ═══════ */
 .sr-only {
   position: absolute;
@@ -1833,6 +1933,15 @@ body.cursor-ready .cursor-ring { opacity: 1; }
   </div>
 </footer>
 
+<!-- Project Detail Modal -->
+<div id="projectModal" class="project-modal" aria-hidden="true" role="dialog">
+  <div class="project-modal-backdrop" onclick="closeProjectModal()"></div>
+  <div class="project-modal-content">
+    <button class="project-modal-close" onclick="closeProjectModal()" aria-label="Close modal">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
 
 <!-- ═══════ JAVASCRIPT ═══════ -->
 <script>
@@ -2010,6 +2119,93 @@ body.cursor-ready .cursor-ring { opacity: 1; }
     });
   };
   window.addEventListener('scroll', highlightNav, { passive: true });
+
+  /* ── Project Modal System ── */
+  const projectData = {
+    "the-node": {
+      title: "The Node Business Incubator",
+      category: "Branding & Identity",
+      image: "the-node.jpg",
+      pdf: "the-node.pdf",
+      description: `
+        <p>The Node Business Incubator is a branding and logo design project for a business incubator that supports entrepreneurs, startups, and innovative ideas. The concept behind the project is inspired by the idea that every successful business begins as a small point or “node” and then grows through connections, collaboration, and continuous development.</p>
+        <p>The logo combines the letter “N” with a network structure made of connected nodes and branches. This visual identity represents the journey of growth:</p>
+        <ul>
+          <li>It starts with a simple point or path.</li>
+          <li>Connections gradually expand and multiply.</li>
+          <li>The network symbolizes the growth of ideas, projects, and opportunities.</li>
+          <li>The branching structure reflects collaboration, mentorship, and innovation within the incubator ecosystem.</li>
+        </ul>
+        <p>The design creates a strong and recognizable identity by integrating the letter N with a modern technological network concept. The use of blue and purple colors communicates creativity, trust, innovation, and progress.</p>
+        <p>The branding system is also designed to work across different applications such as posters, digital platforms, and promotional materials, ensuring consistency and a professional appearance.</p>
+        <h4>Slogan:</h4>
+        <p>“Where ideas connect, innovations grow.”</p>
+        <p>This slogan reinforces the incubator’s mission of turning ideas into successful ventures through support, networking, and development.</p>
+      `
+    },
+    "calendar": {
+      title: "2027 Minimalist Calendar",
+      category: "Print & Editorial",
+      image: "calendar-cover.jpg",
+      pdf: "calendar.pdf",
+      description: `
+        <p>A clean, modern calendar design for 2027 that balances minimalism with vibrant visual anchors. Each month has a clean layout with generous spacing, designed to serve as both an organizing tool and an aesthetic home element.</p>
+        <p>Key highlights of the project:</p>
+        <ul>
+          <li>Creative geometric decorations custom-tailored for each month.</li>
+          <li>Strong typographical hierarchy featuring elegant display numbers.</li>
+          <li>Consistent use of the primary orange and secondary muted tones to connect the pages visually.</li>
+        </ul>
+      `
+    },
+    "jojo-star": {
+      title: "Jojo's Glowing Star (نجمة جوجو المضيئة)",
+      category: "Illustration & Digital Art",
+      image: "jojo-star.jpg",
+      pdf: "jojo-star.pdf",
+      description: `
+        <p>A full digital illustration project for an Arabic children's storybook titled "نجمة جوجو المضيئة" (Jojo's Glowing Star).</p>
+        <p>The story follows a friendly cat named Jojo who loves looking at the sky and notices a small star that falls and gets trapped in the branches near a little river. With gentleness and care, Jojo helps free the star, which slowly returns to its place in the night sky. The story delivers a warm moral lesson: <em>"Helping others makes the world a brighter place" (مساعدة الآخرين تجعل العالم أكثر إشراقاً)</em>.</p>
+        <p>Features of the illustrations:</p>
+        <ul>
+          <li>Friendly character designs and expressive faces.</li>
+          <li>Soft night-sky gradients with warm yellow glows and whimsical floating fireflies.</li>
+          <li>High-contrast visual language designed to keep young readers engaged.</li>
+        </ul>
+      `
+    }
+  };
+
+  const modal = document.getElementById('projectModal');
+  const modalBody = document.getElementById('modalBody');
+
+  window.openProjectModal = function (projectId) {
+    const data = projectData[projectId];
+    if (!data) return;
+
+    modalBody.innerHTML = `
+      <img src="${data.image}" alt="${data.title}" class="modal-project-img">
+      <p class="modal-project-cat">${data.category}</p>
+      <h3 class="modal-project-title">${data.title}</h3>
+      <div class="modal-project-desc">${data.description}</div>
+      <a href="${data.pdf}" target="_blank" class="btn btn-primary" style="margin-top:10px;">
+        <i class="fa-solid fa-file-pdf"></i> View Full PDF Project
+      </a>
+    `;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeProjectModal = function () {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  // Close modal on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeProjectModal();
+  });
 
 })();
 </script>
